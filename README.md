@@ -48,11 +48,13 @@ When I select the “Update Existing Product” option<br>
 Then I will be asked to enter Product Code and Quantity<br> 
 And the product will be updated in the inventory<br>
 
-Scenario 6: Delete existing products<br>
+<b>Scenario 6:</b> Delete existing products<br>
 Given that some products might be discontinued<br> 
 And I would like to remove them from the inventory<br>
 When I select the “Delete Existing Product” option<br>
 Then I will be asked to enter Product Code<br> 
 And the product will be deleted from the inventory<br>
 
+Line to website with product description and pricing:
+http://www.christinevalmy.com/skin-care/products/
 
