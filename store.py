@@ -2,6 +2,8 @@
 # -*- coding: utf-8 -*-
 """A docstring."""
 
+import csv
+
 
 class Store(object):
     """Store operations"""
@@ -73,8 +75,8 @@ class Store(object):
                 self.products[code][2] = self.products[code][2] - cant
                 return True
             else:
-                print 'Sorry but there are only\
-                        '+ str(self.products[code][2]) + ' in stock'
+                print 'Sorry but there are only ' + str(
+                    self.products[code][2]) + ' in stock'
                 return False
 
     def del_product(self, code):
@@ -93,6 +95,17 @@ class Store(object):
         """Tis function shows the total inventory of products"""
         print 'Code \t Product \t Cant. \t Price'
         print '-------------------------------------------'
-        for k, val in self.products.items():
+        for k, val in self.products.iteritems():
             print '{0} \t {1} \t {2} \t ${3}'.format(k, val[1], val[2], val[0])
+        print 'Press enter to go to the main menu'
+
+    def export_inventory(self):
+        """Tis function shows the total inventory of products"""
+        with open('inv.csv', 'wb') as fhandler:
+            arch = csv.writer(fhandler, delimiter=',')
+            for k, val in self.products.iteritems():
+                data = ['Code', 'Name', 'Qty', 'Price'], [k, val[1],
+                                                          val[2], val[0]]
+                arch.writerows(data)
+        print 'Your inventory has been exported'
         print 'Press enter to go to the main menu'
