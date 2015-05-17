@@ -55,6 +55,13 @@ When I select the “Delete Existing Product” option<br>
 Then I will be asked to enter Product Code<br> 
 And the product will be deleted from the inventory<br>
 
+<b>Scenario 7:</b> Delete existing products<br>
+Given that I want to be able to export my inventory<br> 
+And I would like share the informatino with business partners<br>
+When I select the “Export Inventory” option<br>
+Then a .csv file will be created<br> 
+And the inventory could be shared and updated<br>
+
 Link to website with product description and pricing:
 http://www.christinevalmy.com/skin-care/products/
 
