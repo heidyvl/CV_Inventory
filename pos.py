@@ -21,7 +21,11 @@ class POS(object):
              option(string): a value selecting one of the options of the menu
              Returns: None
 
+<<<<<<< HEAD
+         Examples:
+=======
         Examples:
+>>>>>>> ce522b6265257196eb8db17ecdcacb1f6f1da839
            product = [('0001', 'Valnel', 5, '$32'),
            ('0002', 'Special 11', '$30'), ('0003', 'Deep Cleanser', '$22.75')]
            printMenu('1')
@@ -36,9 +40,11 @@ class POS(object):
 
         """
 
-        option_dict = {1: 'Sell Product', 2: 'View Inventory', 3: 'View \
-                       Daily Sales', 4: 'Add New Product', 0: 'Exit', 5: '\
-                       Update Existing Product', 6: 'Delete existing product'}
+        option_dict = {1: 'Sell Product', 2: 'View Inventory',
+                       3: 'View Daily Sales', 4: 'Add New Product',
+                       0: 'Exit', 5: 'Update Existing Product',
+                       6: 'Delete existing product',
+                       7: 'Export Inventory'}
         print 'Please choose an option:'
         for key, value in option_dict.iteritems():
             print (key, value)
@@ -56,6 +62,8 @@ class POS(object):
             self.update_product()
         if option == '6':
             self.del_product()
+        if option == '7':
+            self.store.export_inventory()
 
     def sell_product(self):
         """This function sells products
@@ -113,10 +121,8 @@ class POS(object):
             print 'Enter product quantity'
             cant = raw_input()
             self.store.add_product(code, name, price, cant)
-            print 'Your product with code ' + code + ' has been \
-                   added to the inventory'
-            print 'Press 2 to view your inventory or press enter to go \
-                   to the main menu'
+            print 'Your product with code ' + code + ' has been added to the inventory'
+            print 'Press 2 to view your inventory or press enter to go to the main menu'
 
     def update_product(self):
         """This function updates quantity of products
@@ -136,8 +142,7 @@ class POS(object):
             cant = raw_input()
             self.store.update_product(code, cant)
             print 'Your product with code ' + code + ' has been updated'
-            print 'Press 2 to view your inventory or press enter \
-                   to go to the main menu'
+            print 'Press 2 to view your inventory or press enter to go to the main menu'
 
     def del_product(self):
         """This function deletes products from the inventory
@@ -149,6 +154,5 @@ class POS(object):
         print 'Enter product code'
         code = raw_input()
         print 'Your product with code ' + code + ' has been deleted'
-        print 'Press 2 to view your inventory or press enter to \
-               go to the main menu'
+        print 'Press 2 to view your inventory or press enter to go to the main menu'
         self.store.del_product(code)
