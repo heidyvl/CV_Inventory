@@ -55,6 +55,6 @@ When I select the “Delete Existing Product” option<br>
 Then I will be asked to enter Product Code<br> 
 And the product will be deleted from the inventory<br>
 
-Line to website with product description and pricing:
+Link to website with product description and pricing:
 http://www.christinevalmy.com/skin-care/products/
 
