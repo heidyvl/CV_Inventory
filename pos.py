@@ -22,17 +22,16 @@ class POS(object):
              Returns: None
 
         Examples:
-           product = store.products
-           product = [('0001', 'Firgidaire AC', 5, '$124.99'),
-           ('0002', 'Samsung TV', '$699.99'), ('0003', 'Iphone 6', '$690.79')]
+           product = [('0001', 'Valnel', 5, '$32'),
+           ('0002', 'Special 11', '$30'), ('0003', 'Deep Cleanser', '$22.75')]
            printMenu('1')
            'Enter Product Code'
            printMenu('2')
            'Code 	 Product 	 Cant. 	 Price
             -------------------------------------------
-            0001 	 Firgidaire AC 	 5 	 $124.99
-            0002 	 Samsung TV 	 1 	 $699.99
-            0003 	 Iphone 6 	 1 	 $690.79
+            0001 	 Valnel      	 5 	 $32
+            0002 	 Special 11 	 1 	 $30
+            0003 	 Deep Cleanser 	 1 	 $22.75
 
 
         """
