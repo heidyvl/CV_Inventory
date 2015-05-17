@@ -36,11 +36,11 @@ class Sales(object):
         total = 0
         print'Code\tProduct\t\tCant\tPrice\tTotal'
         print '----------------------------------------------'
-        for key, value in self.products.iteritems():
-            total += value[2]*value[0]
-            print'{0} \t{1} \t{2} \t${3} \
-                \t${4}'.format(key, value[1], value[2],
-                               value[0], value[2]*value[0])
+        for key, val in self.products.iteritems():
+            total += val[2]*val[0]
+            print'{0} \t{1} \t{2} \t${3} \t${4}'.format(key, val[1], val[2],
+                                                        val[0],
+                                                        val[2]*val[0])
         print '----------------------------------------------'
         print 'Total \t* \t* \t* \t* \t${0}'.format(total)
         print 'Press enter to go to the main menu'
