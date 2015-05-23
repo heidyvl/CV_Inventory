@@ -21,11 +21,8 @@ class POS(object):
              option(string): a value selecting one of the options of the menu
              Returns: None
 
-<<<<<<< HEAD
-         Examples:
-=======
         Examples:
->>>>>>> ce522b6265257196eb8db17ecdcacb1f6f1da839
+
            product = [('0001', 'Valnel', 5, '$32'),
            ('0002', 'Special 11', '$30'), ('0003', 'Deep Cleanser', '$22.75')]
            printMenu('1')
@@ -78,26 +75,36 @@ class POS(object):
             code = raw_input()
             product = self.store.get_product(code)
             exists = self.store.product_exist(code)
+            cant = 0
+            cash = 0
             if product is not None and exists is True:
                 print 'Product \t Price'
                 print '{0} \t {1}'.format(product[1], product[0])
                 print 'Please enter quantity'
-                cant = int(raw_input())
+                while cant == 0:
+                    try:
+                        cant = int(raw_input())
+                    except ValueError:
+                        print 'Please enter a valid quantity'
+                        continue
 
                 if self.store.delete_product(code, cant):
                     self.sales.add_sale(code, product[0], product[1], cant)
                     cost = cant*product[0]
                     print 'That will be ${0}.'.format(round(cost, 3))
                     print 'Please enter the cash'
-                    cash = float(raw_input())
+                    while cash == 0:
+                        try:
+                            cash = float(raw_input())
+                        except ValueError:
+                            print 'Please enter a valid ammount'
                     change = cash - cost
-                    if change >= 0:
-                        print 'Your change is ${0}'.format(round(change, 3))
-                    else:
+                    if change < 0:
                         print'Please enter a valid ammount'
+                    else:
+                        print 'Your change is $ {0}'.format(round(change, 3))
             else:
                 print 'Wrong product code'
-
             print 'Do you want to sell another product? (y/n)'
             option = raw_input()
 
@@ -121,8 +128,10 @@ class POS(object):
             print 'Enter product quantity'
             cant = raw_input()
             self.store.add_product(code, name, price, cant)
-            print 'Your product with code ' + code + ' has been added to the inventory'
-            print 'Press 2 to view your inventory or press enter to go to the main menu'
+            print 'Your product with code ' + code + ' has been ' \
+                  'added to the inventory'
+            print 'Press 2 to view your inventory or press enter ' \
+                  'to go to the main menu'
 
     def update_product(self):
         """This function updates quantity of products
@@ -142,7 +151,8 @@ class POS(object):
             cant = raw_input()
             self.store.update_product(code, cant)
             print 'Your product with code ' + code + ' has been updated'
-            print 'Press 2 to view your inventory or press enter to go to the main menu'
+            print 'Press 2 to view your inventory or press ' \
+                  'enter to go to the main menu'
 
     def del_product(self):
         """This function deletes products from the inventory
@@ -154,5 +164,6 @@ class POS(object):
         print 'Enter product code'
         code = raw_input()
         print 'Your product with code ' + code + ' has been deleted'
-        print 'Press 2 to view your inventory or press enter to go to the main menu'
+        print 'Press 2 to view your inventory or press enter to' \
+              'go to the main menu'
         self.store.del_product(code)
